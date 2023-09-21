@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            margin: 0;
+            background: black;
+        }
+
+        #img {
+            display: block;
+            object-fit: contain;
+            background: black;
+
+            margin: 0 auto;
+        }
+        canvas{
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <img id="img" src="" alt="">
+
+    <!-- <div class="text"></div> -->
+    <!-- <canvas id="game"></canvas> -->
+
+    <script>
+        let idx = 1;
+        const img = document.getElementById("img");
+        img.src = "image/Desktop - 1.png";
+        const timer = setInterval(() => {
+            img.src = `image/Desktop - ${++idx}.png`;
+            if (idx == 8) {
+                clearInterval(timer);
+
+                img.remove();
+
+                const canvas = document.createElement("canvas");
+                canvas.id = "game";
+                document.body.appendChild(canvas);
+
+                const script = document.createElement("script");
+                script.src = "dino_game.js";
+                document.body.appendChild(script);
+            }
+        }, 2000)
+    </script>
+</body>
+
+</html>
